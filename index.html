@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سوق الإعلانات - عقارات | سيارات | وظائف</title>
+    <title>سوق الإعلانات - سوريا</title>
     <style>
         * {
             margin: 0;
@@ -40,6 +40,80 @@
             font-size: 0.9rem;
         }
 
+        /* شريط البحث */
+        .search-section {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-select {
+            flex: 1;
+            min-width: 150px;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: inherit;
+            background: white;
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .reset-btn:hover {
+            background: #5a6268;
+        }
+
+        .results-count {
+            background: #e9ecef;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #495057;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
         /* شريط التصنيفات */
         .categories-bar {
             display: flex;
@@ -65,16 +139,9 @@
             color: #333;
         }
 
-        .cat-btn:hover {
+        .cat-btn:hover, .cat-btn.active {
             background: #007bff;
             color: white;
-            transform: translateY(-2px);
-        }
-
-        .cat-btn.active {
-            background: #007bff;
-            color: white;
-            box-shadow: 0 4px 12px rgba(0,123,255,0.3);
         }
 
         /* شبكة الإعلانات */
@@ -90,20 +157,17 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .ad-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
 
-        /* صورة الإعلان */
         .ad-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            background: #f5f5f5;
             cursor: pointer;
         }
 
@@ -118,7 +182,6 @@
             font-size: 48px;
         }
 
-        /* محتوى البطاقة */
         .ad-content {
             padding: 16px;
         }
@@ -138,9 +201,6 @@
             font-size: 11px;
             padding: 3px 10px;
             border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .expiry-badge {
@@ -149,12 +209,9 @@
             font-size: 11px;
             padding: 3px 10px;
             border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
         }
 
-        .ad-category {
+        .ad-category, .ad-city {
             background: #e9ecef;
             color: #495057;
             font-size: 11px;
@@ -162,12 +219,16 @@
             border-radius: 20px;
         }
 
+        .ad-city {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
         .ad-title {
             font-size: 1.2rem;
             font-weight: bold;
             color: #1a1a2e;
             margin: 10px 0;
-            line-height: 1.4;
         }
 
         .ad-description {
@@ -188,25 +249,16 @@
             margin: 10px 0;
         }
 
-        .ad-contact {
+        .ad-contact, .ad-location {
             color: #007bff;
             font-size: 0.85rem;
             margin: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        .ad-date, .ad-expiry {
+        .ad-date {
             color: #999;
             font-size: 0.7rem;
             margin-top: 8px;
-            display: inline-block;
-            margin-left: 10px;
-        }
-
-        .ad-expiry {
-            color: #dc3545;
         }
 
         .ad-id {
@@ -218,7 +270,6 @@
             font-family: monospace;
         }
 
-        /* صور متعددة */
         .ad-images-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
@@ -233,14 +284,8 @@
             object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.2s;
         }
 
-        .ad-thumb:hover {
-            transform: scale(1.05);
-        }
-
-        /* نافذة منبثقة للصور */
         .modal {
             display: none;
             position: fixed;
@@ -270,7 +315,6 @@
             color: white;
             font-size: 40px;
             cursor: pointer;
-            font-weight: bold;
         }
 
         .loading {
@@ -280,23 +324,29 @@
         }
 
         @media (max-width: 768px) {
-            .ads-grid {
-                grid-template-columns: 1fr;
-            }
-            .categories-bar {
-                border-radius: 20px;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
+            .ads-grid { grid-template-columns: 1fr; }
+            .filter-row { flex-direction: column; }
+            .filter-select { width: 100%; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>📢 سوق الإعلانات</h1>
-            <p class="subtitle">عقارات | سيارات | وظائف | أدوات منزلية | مستعمل</p>
+            <h1>📢 سوق الإعلانات - سوريا</h1>
+            <p class="subtitle">عقارات | سيارات | وظائف | مستعمل</p>
+        </div>
+
+        <!-- شريط البحث والفلترة -->
+        <div class="search-section">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 بحث عن إعلان... (عنوان، وصف، سعر)">
+            <div class="filter-row">
+                <select id="cityFilter" class="filter-select">
+                    <option value="all">🌍 جميع المدن</option>
+                </select>
+                <button class="reset-btn" onclick="resetFilters()">🔄 إعادة تعيين</button>
+            </div>
+            <div id="resultsCount" class="results-count"></div>
         </div>
 
         <div class="categories-bar" id="categoriesList">
@@ -308,7 +358,6 @@
         </div>
     </div>
 
-    <!-- نافذة عرض الصور -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="modal-close">&times;</span>
         <img id="modalImage" src="">
@@ -317,6 +366,21 @@
     <script>
         let allAds = [];
         let categories = [];
+        let currentCategory = 'all';
+        let currentSearch = '';
+        let currentCity = 'all';
+
+        // قائمة المدن السورية
+        const syrianCities = [
+            'دمشق', 'حلب', 'حمص', 'حماة', 'اللاذقية', 'طرطوس', 'دير الزور', 'الحسكة', 
+            'السويداء', 'درعا', 'إدلب', 'الرقة', 'القنيطرة', 'ريف دمشق', 'قدسيا', 
+            'جرمانا', 'دوما', 'حرستا', 'داريا', 'التل', 'الزبداني', 'يبرود', 'النابك',
+            'قطنا', 'معضمية الشام', 'حمص القديمة', 'الميادين', 'البوكمال', 'عين العرب',
+            'عفرين', 'الباب', 'منبج', 'جرابلس', 'رأس العين', 'القامشلي', 'عامودا',
+            'المالكية', 'الدرباسية', 'جسر الشغور', 'معرة النعمان', 'خان شيخون', 'أريحا',
+            'سلمية', 'مصياف', 'السقيلبية', 'محردة', 'كفرزيتا', 'الغاب', 'بانياس', 
+            'جبلة', 'القرداحة', 'الحفة', 'صافيتا', 'الشيخ بدر', 'دوير رسلان', 'المختارية'
+        ];
 
         async function loadData() {
             try {
@@ -324,10 +388,20 @@
                 const data = await response.json();
                 allAds = data.ads || [];
                 categories = data.categories || ['عقارات', 'سيارات', 'وظائف', 'أدوات منزلية', 'مستعمل'];
+                
+                // إضافة المدن إلى عنصر التحديد
+                const citySelect = document.getElementById('cityFilter');
+                syrianCities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+                
                 renderCategories();
-                renderAds('all');
+                filterAndRenderAds();
             } catch(e) {
-                document.getElementById('adsContainer').innerHTML = '<p class="loading">⚠️ خطأ في تحميل البيانات. تأكد من اتصال الإنترنت.</p>';
+                document.getElementById('adsContainer').innerHTML = '<p class="loading">⚠️ خطأ في تحميل البيانات</p>';
                 console.error('خطأ:', e);
             }
         }
@@ -343,20 +417,57 @@
                 btn.onclick = () => {
                     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    renderAds(cat);
+                    currentCategory = cat;
+                    filterAndRenderAds();
                 };
                 container.appendChild(btn);
             });
         }
 
+        function filterAndRenderAds() {
+            let filtered = [...allAds];
+            
+            // فلترة حسب التصنيف
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(ad => ad.category === currentCategory);
+            }
+            
+            // فلترة حسب المدينة
+            if (currentCity !== 'all') {
+                filtered = filtered.filter(ad => ad.city === currentCity);
+            }
+            
+            // فلترة حسب البحث
+            if (currentSearch.trim() !== '') {
+                const searchTerm = currentSearch.toLowerCase();
+                filtered = filtered.filter(ad => 
+                    ad.title.toLowerCase().includes(searchTerm) ||
+                    ad.description.toLowerCase().includes(searchTerm) ||
+                    ad.price.toLowerCase().includes(searchTerm) ||
+                    (ad.city && ad.city.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            // إزالة الإعلانات المنتهية
+            const today = new Date().toISOString().split('T')[0];
+            filtered = filtered.filter(ad => !ad.expiry_date || ad.expiry_date >= today);
+            
+            // ترتيب: المثبت أولاً
+            filtered.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
+            
+            // عرض عدد النتائج
+            document.getElementById('resultsCount').textContent = `📊 ${filtered.length} إعلان`;
+            
+            renderAds(filtered);
+        }
+
         function renderImages(images) {
             if (!images || images.length === 0) {
-                return '<div class="no-image">📷 لا توجد صور</div>';
+                return '<div class="no-image">📷</div>';
             }
             if (images.length === 1) {
-                return `<img class="ad-image" src="${images[0]}" alt="صورة الإعلان" onclick="showImage('${images[0]}')">`;
+                return `<img class="ad-image" src="${images[0]}" onclick="showImage('${images[0]}')">`;
             }
-            // صور متعددة
             let thumbs = '<div class="ad-images-grid">';
             images.forEach(img => {
                 thumbs += `<img class="ad-thumb" src="${img}" onclick="showImage('${img}')">`;
@@ -365,50 +476,33 @@
             return thumbs;
         }
 
-        function isExpired(expiryDate) {
-            if (!expiryDate) return false;
-            const today = new Date();
-            const expiry = new Date(expiryDate);
-            return expiry < today;
-        }
-
-        function renderAds(category) {
+        function renderAds(ads) {
             const container = document.getElementById('adsContainer');
-            let filtered = (category === 'all') ? allAds : allAds.filter(ad => ad.category === category);
             
-            // إزالة الإعلانات المنتهية من العرض
-            filtered = filtered.filter(ad => !isExpired(ad.expiry_date));
-            
-            // ترتيب: المثبت أولاً
-            filtered.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
-            
-            if(filtered.length === 0) {
-                container.innerHTML = '<div class="loading">📭 لا توجد إعلانات في هذا القسم</div>';
+            if(ads.length === 0) {
+                container.innerHTML = '<div class="loading">📭 لا توجد إعلانات مطابقة للبحث</div>';
                 return;
             }
 
-            container.innerHTML = filtered.map(ad => {
-                const isAdExpired = isExpired(ad.expiry_date);
-                return `
-                <div class="ad-card" style="${isAdExpired ? 'opacity:0.6;' : ''}">
+            container.innerHTML = ads.map(ad => `
+                <div class="ad-card">
                     ${renderImages(ad.images)}
                     <div class="ad-content">
                         <div class="ad-header">
                             ${ad.pinned ? '<span class="pin-badge">📌 مثبت</span>' : ''}
-                            ${ad.expiry_date ? `<span class="expiry-badge">⏰ ينتهي: ${ad.expiry_date}</span>` : '<span class="expiry-badge" style="background:#28a745;">✅ دائم</span>'}
+                            ${ad.expiry_date ? `<span class="expiry-badge">⏰ ينتهي: ${ad.expiry_date}</span>` : ''}
                             <span class="ad-category">${escapeHtml(ad.category)}</span>
+                            ${ad.city ? `<span class="ad-city">📍 ${escapeHtml(ad.city)}</span>` : ''}
                         </div>
                         <div class="ad-title">${escapeHtml(ad.title)}</div>
                         <div class="ad-description">${escapeHtml(ad.description)}</div>
                         <div class="ad-price">💰 ${escapeHtml(ad.price)}</div>
                         <div class="ad-contact">📞 ${escapeHtml(ad.contact)}</div>
-                        <div>
-                            <div class="ad-date">📅 النشر: ${ad.date || ''}</div>
-                        </div>
-                        <div class="ad-id">🆔 رقم الإعلان: ${ad.id}</div>
+                        <div class="ad-date">📅 النشر: ${ad.date || ''}</div>
+                        <div class="ad-id">🆔 ${ad.id}</div>
                     </div>
                 </div>
-            `}).join('');
+            `).join('');
         }
 
         function showImage(url) {
@@ -432,11 +526,26 @@
             });
         }
 
-        // تحميل البيانات عند فتح الصفحة
-        loadData();
+        // أحداث البحث والفلترة
+        function resetFilters() {
+            currentSearch = '';
+            currentCity = 'all';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('cityFilter').value = 'all';
+            filterAndRenderAds();
+        }
 
-        // تحديث كل 60 ثانية
-        setInterval(loadData, 60000);
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            filterAndRenderAds();
+        });
+
+        document.getElementById('cityFilter').addEventListener('change', (e) => {
+            currentCity = e.target.value;
+            filterAndRenderAds();
+        });
+
+        loadData();
     </script>
 </body>
 </html>
