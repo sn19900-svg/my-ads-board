@@ -23,7 +23,6 @@
             margin: auto;
         }
 
-        /* header */
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -40,7 +39,6 @@
             font-size: 0.9rem;
         }
 
-        /* شريط البحث */
         .search-section {
             background: white;
             padding: 20px;
@@ -55,8 +53,6 @@
             border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.3s;
             margin-bottom: 15px;
         }
 
@@ -78,15 +74,8 @@
             padding: 10px 12px;
             border: 2px solid #e0e0e0;
             border-radius: 12px;
-            font-size: 14px;
-            font-family: inherit;
             background: white;
             cursor: pointer;
-        }
-
-        .filter-select:focus {
-            outline: none;
-            border-color: #007bff;
         }
 
         .reset-btn {
@@ -96,8 +85,6 @@
             padding: 10px 20px;
             border-radius: 12px;
             cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s;
         }
 
         .reset-btn:hover {
@@ -109,12 +96,10 @@
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 13px;
-            color: #495057;
             margin-top: 10px;
             display: inline-block;
         }
 
-        /* شريط التصنيفات */
         .categories-bar {
             display: flex;
             flex-wrap: wrap;
@@ -136,7 +121,6 @@
             font-size: 14px;
             font-weight: 500;
             transition: all 0.3s ease;
-            color: #333;
         }
 
         .cat-btn:hover, .cat-btn.active {
@@ -144,14 +128,12 @@
             color: white;
         }
 
-        /* شبكة الإعلانات */
         .ads-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 25px;
         }
 
-        /* بطاقة الإعلان */
         .ad-card {
             background: white;
             border-radius: 16px;
@@ -164,22 +146,41 @@
             transform: translateY(-5px);
         }
 
+        .ad-image-container {
+            width: 100%;
+            height: 220px;
+            background: #f5f5f5;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
         .ad-image {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
-            cursor: pointer;
         }
 
         .no-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             font-size: 48px;
+        }
+
+        .image-count {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
         }
 
         .ad-content {
@@ -249,7 +250,7 @@
             margin: 10px 0;
         }
 
-        .ad-contact, .ad-location {
+        .ad-contact {
             color: #007bff;
             font-size: 0.85rem;
             margin: 8px 0;
@@ -268,22 +269,6 @@
             padding-top: 10px;
             border-top: 1px solid #eee;
             font-family: monospace;
-        }
-
-        .ad-images-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 8px;
-            padding: 10px;
-            background: #f8f9fa;
-        }
-
-        .ad-thumb {
-            width: 100%;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
         }
 
         .modal {
@@ -337,9 +322,8 @@
             <p class="subtitle">عقارات | سيارات | وظائف | مستعمل</p>
         </div>
 
-        <!-- شريط البحث والفلترة -->
         <div class="search-section">
-            <input type="text" id="searchInput" class="search-input" placeholder="🔍 بحث عن إعلان... (عنوان، وصف، سعر)">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 بحث عن إعلان... (عنوان، وصف، سعر، مدينة)">
             <div class="filter-row">
                 <select id="cityFilter" class="filter-select">
                     <option value="all">🌍 جميع المدن</option>
@@ -370,26 +354,28 @@
         let currentSearch = '';
         let currentCity = 'all';
 
-        // قائمة المدن السورية
         const syrianCities = [
             'دمشق', 'حلب', 'حمص', 'حماة', 'اللاذقية', 'طرطوس', 'دير الزور', 'الحسكة', 
             'السويداء', 'درعا', 'إدلب', 'الرقة', 'القنيطرة', 'ريف دمشق', 'قدسيا', 
             'جرمانا', 'دوما', 'حرستا', 'داريا', 'التل', 'الزبداني', 'يبرود', 'النابك',
-            'قطنا', 'معضمية الشام', 'حمص القديمة', 'الميادين', 'البوكمال', 'عين العرب',
-            'عفرين', 'الباب', 'منبج', 'جرابلس', 'رأس العين', 'القامشلي', 'عامودا',
-            'المالكية', 'الدرباسية', 'جسر الشغور', 'معرة النعمان', 'خان شيخون', 'أريحا',
-            'سلمية', 'مصياف', 'السقيلبية', 'محردة', 'كفرزيتا', 'الغاب', 'بانياس', 
-            'جبلة', 'القرداحة', 'الحفة', 'صافيتا', 'الشيخ بدر', 'دوير رسلان', 'المختارية'
+            'قطنا', 'معضمية الشام', 'الميادين', 'البوكمال', 'عين العرب', 'عفرين', 
+            'الباب', 'منبج', 'جرابلس', 'رأس العين', 'القامشلي', 'عامودا', 'المالكية',
+            'الدرباسية', 'جسر الشغور', 'معرة النعمان', 'خان شيخون', 'أريحا', 'سلمية',
+            'مصياف', 'السقيلبية', 'محردة', 'كفرزيتا', 'بانياس', 'جبلة', 'القرداحة',
+            'الحفة', 'صافيتا', 'الشيخ بدر', 'دوير رسلان', 'المختارية'
         ];
 
         async function loadData() {
             try {
+                console.log('جاري تحميل البيانات...');
                 const response = await fetch('ads.json?v=' + Date.now());
                 const data = await response.json();
                 allAds = data.ads || [];
                 categories = data.categories || ['عقارات', 'سيارات', 'وظائف', 'أدوات منزلية', 'مستعمل'];
                 
-                // إضافة المدن إلى عنصر التحديد
+                console.log('تم تحميل الإعلانات:', allAds.length);
+                console.log('الإعلانات:', allAds);
+                
                 const citySelect = document.getElementById('cityFilter');
                 syrianCities.forEach(city => {
                     const option = document.createElement('option');
@@ -401,8 +387,8 @@
                 renderCategories();
                 filterAndRenderAds();
             } catch(e) {
-                document.getElementById('adsContainer').innerHTML = '<p class="loading">⚠️ خطأ في تحميل البيانات</p>';
                 console.error('خطأ:', e);
+                document.getElementById('adsContainer').innerHTML = '<p class="loading">⚠️ خطأ في تحميل البيانات: ' + e.message + '</p>';
             }
         }
 
@@ -424,56 +410,49 @@
             });
         }
 
+        // دالة عرض الصورة الواحدة أو صور متعددة
+        function renderAdImage(ad) {
+            if (ad.images && ad.images.length > 0 && ad.images[0] && ad.images[0].startsWith('http')) {
+                return `
+                    <div class="ad-image-container" onclick="showImage('${ad.images[0]}')">
+                        <img class="ad-image" src="${ad.images[0]}" alt="صورة الإعلان" 
+                             onerror="this.parentElement.innerHTML='<div class='no-image'>📷 خطأ في التحميل</div>'">
+                        ${ad.images.length > 1 ? `<div class="image-count">${ad.images.length} صور</div>` : ''}
+                    </div>
+                `;
+            } else {
+                return `<div class="ad-image-container"><div class="no-image">📷 لا توجد صور</div></div>`;
+            }
+        }
+
         function filterAndRenderAds() {
             let filtered = [...allAds];
             
-            // فلترة حسب التصنيف
             if (currentCategory !== 'all') {
                 filtered = filtered.filter(ad => ad.category === currentCategory);
             }
             
-            // فلترة حسب المدينة
             if (currentCity !== 'all') {
                 filtered = filtered.filter(ad => ad.city === currentCity);
             }
             
-            // فلترة حسب البحث
             if (currentSearch.trim() !== '') {
                 const searchTerm = currentSearch.toLowerCase();
                 filtered = filtered.filter(ad => 
-                    ad.title.toLowerCase().includes(searchTerm) ||
-                    ad.description.toLowerCase().includes(searchTerm) ||
-                    ad.price.toLowerCase().includes(searchTerm) ||
+                    (ad.title && ad.title.toLowerCase().includes(searchTerm)) ||
+                    (ad.description && ad.description.toLowerCase().includes(searchTerm)) ||
+                    (ad.price && ad.price.toLowerCase().includes(searchTerm)) ||
                     (ad.city && ad.city.toLowerCase().includes(searchTerm))
                 );
             }
             
-            // إزالة الإعلانات المنتهية
             const today = new Date().toISOString().split('T')[0];
             filtered = filtered.filter(ad => !ad.expiry_date || ad.expiry_date >= today);
             
-            // ترتيب: المثبت أولاً
             filtered.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
             
-            // عرض عدد النتائج
             document.getElementById('resultsCount').textContent = `📊 ${filtered.length} إعلان`;
-            
             renderAds(filtered);
-        }
-
-        function renderImages(images) {
-            if (!images || images.length === 0) {
-                return '<div class="no-image">📷</div>';
-            }
-            if (images.length === 1) {
-                return `<img class="ad-image" src="${images[0]}" onclick="showImage('${images[0]}')">`;
-            }
-            let thumbs = '<div class="ad-images-grid">';
-            images.forEach(img => {
-                thumbs += `<img class="ad-thumb" src="${img}" onclick="showImage('${img}')">`;
-            });
-            thumbs += '</div>';
-            return thumbs;
         }
 
         function renderAds(ads) {
@@ -486,7 +465,7 @@
 
             container.innerHTML = ads.map(ad => `
                 <div class="ad-card">
-                    ${renderImages(ad.images)}
+                    ${renderAdImage(ad)}
                     <div class="ad-content">
                         <div class="ad-header">
                             ${ad.pinned ? '<span class="pin-badge">📌 مثبت</span>' : ''}
@@ -506,10 +485,12 @@
         }
 
         function showImage(url) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.style.display = 'block';
-            modalImg.src = url;
+            if (url && url.startsWith('http')) {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                modal.style.display = 'block';
+                modalImg.src = url;
+            }
         }
 
         function closeModal() {
@@ -526,7 +507,6 @@
             });
         }
 
-        // أحداث البحث والفلترة
         function resetFilters() {
             currentSearch = '';
             currentCity = 'all';
@@ -545,6 +525,7 @@
             filterAndRenderAds();
         });
 
+        // بدء التحميل
         loadData();
     </script>
 </body>
