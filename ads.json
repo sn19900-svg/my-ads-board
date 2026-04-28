@@ -38,22 +38,6 @@
       "images": [
         "https://raw.githubusercontent.com/sn19900-svg/my-ads-board/main/images/1777374502560_0.jpg"
       ]
-    },
-    {
-      "id": "1777375526736",
-      "title": "سيارة فورد للبيع",
-      "description": "كاملة المواصفات",
-      "price": "7000 $",
-      "category": "سيارات",
-      "city": "حمص",
-      "contact": "099999121",
-      "date": "2026-04-28",
-      "expiry_date": "2026-05-28",
-      "pinned": false,
-      "pinExpiry": null,
-      "images": [
-        "https://raw.githubusercontent.com/sn19900-svg/my-ads-board/main/images/1777375526736_0.jpg"
-      ]
     }
   ]
 }
