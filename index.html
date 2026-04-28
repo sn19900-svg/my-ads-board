@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإعلانات</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;padding:20px;direction:rtl}
+        .container{max-width:1200px;margin:auto}
+        h1{text-align:center;color:#1a1a2e;margin-bottom:30px}
+        .categories{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px}
+        .cat-btn{background:#fff;border:none;padding:8px 20px;border-radius:30px;cursor:pointer;font-size:14px;transition:0.3s;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+        .cat-btn.active,.cat-btn:hover{background:#007bff;color:#fff}
+        .ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+        .ad-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.1);border-right:4px solid #ccc}
+        .ad-card.pinned{border-right-color:#ff9800;background:#fffaf0}
+        .pin-badge{background:#ff9800;color:#fff;font-size:11px;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:8px}
+        .ad-title{font-size:18px;font-weight:bold;margin:5px 0}
+        .ad-category{display:inline-block;background:#e9ecef;padding:2px 10px;border-radius:20px;font-size:12px;margin:8px 0}
+        .ad-desc{color:#555;margin:8px 0;line-height:1.4}
+        .ad-price{color:#28a745;font-size:20px;font-weight:bold;margin:8px 0}
+        .ad-contact{color:#007bff;margin:5px 0}
+        .ad-date{color:#888;font-size:11px;margin-top:8px}
+        .loading{text-align:center;padding:50px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📢 سوق الإعلانات</h1>
+        <div class="categories" id="categoriesList">
+            <button class="cat-btn active" data-cat="all">الكل</button>
+        </div>
+        <div id="adsContainer" class="ads-grid">
+            <div class="loading">جاري تحميل الإعلانات...</div>
+        </div>
+    </div>
+
+    <script>
+        let allAds = [];
+        let categories = [];
+
+        async function loadData() {
+            try {
+                const response = await fetch('ads.json?v=' + Date.now());
+                const data = await response.json();
+                allAds = data.ads || [];
+                categories = data.categories || ['عقارات', 'سيارات', 'وظائف', 'أدوات منزلية', 'مستعمل'];
+                renderCategories();
+                renderAds('all');
+            } catch(e) {
+                document.getElementById('adsContainer').innerHTML = '<p style="text-align:center">⚠️ خطأ في تحميل البيانات</p>';
+            }
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categoriesList');
+            container.innerHTML = '<button class="cat-btn active" data-cat="all">الكل</button>';
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'cat-btn';
+                btn.textContent = cat;
+                btn.onclick = () => {
+                    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderAds(cat);
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderAds(category) {
+            const container = document.getElementById('adsContainer');
+            let filtered = (category === 'all') ? allAds : allAds.filter(ad => ad.category === category);
+            filtered.sort((a,b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
+            
+            if(filtered.length === 0) {
+                container.innerHTML = '<p style="text-align:center">📭 لا توجد إعلانات في هذا القسم</p>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(ad => `
+                <div class="ad-card ${ad.pinned ? 'pinned' : ''}">
+                    ${ad.pinned ? '<div class="pin-badge">📌 مثبت</div>' : ''}
+                    <div class="ad-title">${escapeHtml(ad.title)}</div>
+                    <div class="ad-category">${escapeHtml(ad.category)}</div>
+                    <div class="ad-desc">${escapeHtml(ad.description)}</div>
+                    <div class="ad-price">💰 ${escapeHtml(ad.price)}</div>
+                    <div class="ad-contact">📞 ${escapeHtml(ad.contact)}</div>
+                    <div class="ad-date">📅 ${ad.date || ''}</div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function(m) {
+                if(m === '&') return '&amp;';
+                if(m === '<') return '&lt;';
+                if(m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
