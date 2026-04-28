@@ -54,6 +54,22 @@
       "images": [
         "https://raw.githubusercontent.com/sn19900-svg/my-ads-board/main/images/1777375526736_0.jpg"
       ]
+    },
+    {
+      "id": "1777376087917",
+      "title": "شقة للبيع",
+      "description": "غرفتين وصالة",
+      "price": "1,500,000",
+      "category": "عقارات",
+      "city": "دمشق",
+      "contact": "01234567890",
+      "date": "2026-04-28",
+      "expiry_date": "2026-05-28",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https://raw.githubusercontent.com/sn19900-svg/my-ads-board/main/images/1777376087917_0.jpg"
+      ]
     }
   ]
 }
