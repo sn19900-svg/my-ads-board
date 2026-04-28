@@ -23,7 +23,6 @@
             margin: auto;
         }
 
-        /* header */
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -40,7 +39,6 @@
             font-size: 0.9rem;
         }
 
-        /* شريط البحث */
         .search-section {
             background: white;
             padding: 20px;
@@ -54,7 +52,7 @@
             padding: 12px 16px;
             border: 2px solid #e0e0e0;
             border-radius: 12px;
-font-size: 16px;
+            font-size: 16px;
             margin-bottom: 15px;
         }
 
@@ -102,7 +100,6 @@ font-size: 16px;
             display: inline-block;
         }
 
-        /* شريط التصنيفات */
         .categories-bar {
             display: flex;
             flex-wrap: wrap;
@@ -131,14 +128,12 @@ font-size: 16px;
             color: white;
         }
 
-        /* شبكة الإعلانات - عنوان فقط */
         .ads-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
 
-        /* بطاقة الإعلان - عنوان فقط */
         .ad-card {
             background: white;
             border-radius: 16px;
@@ -277,7 +272,6 @@ font-size: 16px;
             overflow-y: auto;
         }
 
-        /* صور في النافذة المنبثقة */
         .modal-image-container {
             width: 100%;
             margin-bottom: 15px;
@@ -334,19 +328,59 @@ font-size: 16px;
             color: #444;
         }
 
-        .modal-contact {
-            background: #e3f2fd;
-            padding: 12px;
-            border-radius: 12px;
-            text-align: center;
+        /* زر الواتساب */
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+        }
+
+        .whatsapp-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             margin-top: 15px;
         }
 
-        .modal-contact a {
-            color: #007bff;
+        .call-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #007bff;
+            color: white;
             text-decoration: none;
-            font-size: 1.1rem;
+            padding: 12px 20px;
+            border-radius: 50px;
             font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .call-btn:hover {
+            background: #0056b3;
         }
 
         .expiry-badge {
@@ -355,6 +389,7 @@ font-size: 16px;
             font-size: 11px;
             padding: 3px 10px;
             border-radius: 20px;
+            display: inline-block;
         }
 
         .loading {
@@ -456,6 +491,20 @@ font-size: 16px;
             'مصياف', 'السقيلبية', 'محردة', 'كفرزيتا', 'بانياس', 'جبلة', 'القرداحة',
             'الحفة', 'صافيتا', 'الشيخ بدر', 'دوير رسلان', 'المختارية'
         ];
+
+        function formatPhoneForWhatsApp(phone) {
+            // إزالة أي مسافات أو شرطات أو أقواس
+            let cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
+            // إزالة الصفر الأول إذا كان الرقم يبدأ بـ 0
+            if (cleanPhone.startsWith('0')) {
+                cleanPhone = cleanPhone.substring(1);
+            }
+            // إضافة كود سوريا 963 إذا لم يكن موجوداً
+            if (!cleanPhone.startsWith('963')) {
+                cleanPhone = '963' + cleanPhone;
+            }
+            return cleanPhone;
+        }
 
         async function loadData() {
             try {
@@ -559,6 +608,9 @@ font-size: 16px;
             const modal = document.getElementById('detailsModal');
             const modalBody = document.getElementById('modalBody');
             
+            const whatsappNumber = formatPhoneForWhatsApp(ad.contact);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=مرحباً، أنا مهتم بالإعلان: ${encodeURIComponent(ad.title)}`;
+            
             // بناء محتوى النافذة المنبثقة
             let imagesHtml = '';
             if (ad.images && ad.images.length > 0) {
@@ -599,12 +651,22 @@ font-size: 16px;
                 ${ad.expiry_date ? `
                     <div class="modal-detail">
                         <div class="modal-detail-label">⏰ ينتهي في</div>
-                        <div class="modal-detail-value expiry-badge" style="display: inline-block;">${ad.expiry_date}</div>
+                        <div class="modal-detail-value"><span class="expiry-badge">${ad.expiry_date}</span></div>
                     </div>
                 ` : ''}
-                <div class="modal-contact">
-                    📞 <a href="tel:${ad.contact}">${escapeHtml(ad.contact)}</a>
-                    <br><small>اضغط على الرقم للاتصال</small>
+                
+                <div class="contact-buttons">
+                    <a href="${whatsappUrl}" target="_blank" class="whatsapp-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M12.032 0C5.374 0 0 5.373 0 12.032c0 2.113.55 4.193 1.61 6.018L.012 24l6.094-1.593a11.967 11.967 0 0 0 5.726 1.46c6.658 0 12.032-5.373 12.032-12.032 0-6.658-5.374-11.835-12.032-11.835z"/>
+                            <path fill="white" d="M12.032 2.286c5.367 0 9.72 4.353 9.72 9.72 0 5.367-4.353 9.72-9.72 9.72-1.79 0-3.516-.488-5.008-1.422l-.344-.202-3.585.936.958-3.492-.224-.37A9.625 9.625 0 0 1 2.263 12c0-5.367 4.353-9.72 9.72-9.72z"/>
+                            <path fill="white" d="M9.053 7.472c-.208-.48-.427-.49-.624-.5-.175-.01-.38-.01-.586-.01-.205 0-.536.077-.818.38-.282.304-1.073 1.05-1.073 2.56 0 1.51 1.098 2.968 1.25 3.173.152.206 2.14 3.293 5.208 4.584.726.306 1.293.49 1.735.626.73.233 1.393.2 1.918.12.586-.09 1.806-.74 2.06-1.455.254-.714.254-1.326.178-1.454-.077-.128-.282-.205-.587-.358-.304-.153-1.804-.892-2.083-.994-.28-.102-.48-.153-.684.153-.204.307-.79.994-.97 1.198-.18.204-.36.23-.664.077-.305-.154-1.286-.475-2.45-1.514-.907-.81-1.52-1.81-1.698-2.116-.178-.307-.02-.474.134-.624.14-.14.306-.358.46-.562.153-.204.204-.358.306-.588.102-.23.05-.434-.025-.608-.076-.174-.684-1.63-.938-2.233-.25-.602-.5-.52-.673-.52-.175 0-.38-.01-.586-.01z"/>
+                        </svg>
+                        التواصل عبر واتساب
+                    </a>
+                    <a href="tel:${ad.contact}" class="call-btn">
+                        📞 ${escapeHtml(ad.contact)}
+                    </a>
                 </div>
                 <div class="modal-detail">
                     <div class="modal-detail-label">🆔 رقم الإعلان</div>
