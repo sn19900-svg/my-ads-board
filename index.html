@@ -25,100 +25,206 @@
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            position: relative;
         }
 
         h1 {
             color: #1a1a2e;
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
         }
 
         .subtitle {
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
-        .search-section {
-            background: white;
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        /* أيقونة البحث */
+        .search-icon {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #007bff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,123,255,0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
         }
 
-        .search-input {
+        .search-icon:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .search-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        /* نافذة البحث المنبثقة */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 16px;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            direction: rtl;
+        }
+
+        .search-modal-content {
+            background: white;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 24px;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .search-modal-header {
+            background: #007bff;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-modal-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .search-modal-close {
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .search-modal-body {
+            padding: 20px;
+        }
+
+        .search-input-group {
             margin-bottom: 15px;
         }
 
-        .search-input:focus {
+        .search-input-group label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+        }
+
+        .search-input-field {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input-field:focus {
             outline: none;
             border-color: #007bff;
         }
 
-        .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .filter-select {
-            flex: 1;
-            min-width: 150px;
-            padding: 10px 12px;
-            border: 2px solid #e0e0e0;
+        .search-select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
             border-radius: 12px;
+            font-size: 14px;
             background: white;
             cursor: pointer;
         }
 
-        .reset-btn {
+        .search-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .search-btn {
+            flex: 1;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #0056b3;
+        }
+
+        .reset-search-btn {
+            flex: 1;
             background: #6c757d;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px;
             border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        .reset-btn:hover {
+        .reset-search-btn:hover {
             background: #5a6268;
         }
 
-        .results-count {
-            background: #e9ecef;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
+        /* شريط التصنيفات */
         .categories-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             background: white;
-            padding: 15px;
+            padding: 10px 15px;
             border-radius: 50px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
 
         .cat-btn {
             background: #f0f2f5;
             border: none;
-            padding: 8px 24px;
+            padding: 6px 18px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             transition: all 0.3s ease;
         }
@@ -128,6 +234,33 @@
             color: white;
         }
 
+        /* مؤشر البحث النشط */
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .filter-badge {
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            color: #495057;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filter-badge .remove-filter {
+            cursor: pointer;
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        /* شبكة الإعلانات */
         .ads-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -155,31 +288,31 @@
         }
 
         .ad-content {
-            padding: 20px;
+            padding: 16px;
         }
 
         .ad-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .pin-badge {
             background: #ff9800;
             color: white;
-            font-size: 11px;
-            padding: 3px 10px;
+            font-size: 10px;
+            padding: 2px 8px;
             border-radius: 20px;
         }
 
         .ad-category, .ad-city {
             background: #e9ecef;
             color: #495057;
-            font-size: 11px;
-            padding: 3px 10px;
+            font-size: 10px;
+            padding: 2px 8px;
             border-radius: 20px;
         }
 
@@ -189,24 +322,24 @@
         }
 
         .ad-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #1a1a2e;
-            margin: 10px 0;
+            margin: 8px 0;
             line-height: 1.4;
         }
 
         .ad-price {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             color: #28a745;
-            margin: 10px 0;
+            margin: 8px 0;
         }
 
         .ad-date {
             color: #999;
-            font-size: 0.7rem;
-            margin-top: 10px;
+            font-size: 0.65rem;
+            margin-top: 8px;
         }
 
         /* نافذة التفاصيل المنبثقة */
@@ -218,7 +351,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.85);
-            z-index: 1000;
+            z-index: 1100;
             overflow-y: auto;
             direction: rtl;
         }
@@ -247,7 +380,7 @@
         .modal-header {
             background: #007bff;
             color: white;
-            padding: 15px 20px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -255,7 +388,7 @@
 
         .modal-header h3 {
             margin: 0;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .modal-close {
@@ -279,7 +412,7 @@
 
         .modal-main-image {
             width: 100%;
-            max-height: 300px;
+            max-height: 280px;
             object-fit: cover;
             border-radius: 12px;
             cursor: pointer;
@@ -293,8 +426,8 @@
         }
 
         .modal-thumb {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
@@ -306,45 +439,42 @@
         }
 
         .modal-detail {
-            margin: 12px 0;
-            padding: 8px 0;
+            margin: 10px 0;
+            padding: 6px 0;
             border-bottom: 1px solid #eee;
         }
 
         .modal-detail-label {
             font-weight: bold;
             color: #555;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
         .modal-detail-value {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #333;
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
         .ad-description-full {
-            line-height: 1.6;
+            line-height: 1.5;
             color: #444;
         }
 
-        /* زر الواتساب */
         .whatsapp-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             background: #25D366;
             color: white;
             text-decoration: none;
-            padding: 14px 20px;
+            padding: 10px 16px;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1rem;
-            margin: 15px 0;
+            font-size: 0.9rem;
+            margin: 12px 0;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
         }
 
         .whatsapp-btn:hover {
@@ -352,27 +482,22 @@
             transform: scale(1.02);
         }
 
-        .whatsapp-btn img {
-            width: 24px;
-            height: 24px;
-        }
-
         .contact-buttons {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 8px;
+            margin-top: 12px;
         }
 
         .call-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             background: #007bff;
             color: white;
             text-decoration: none;
-            padding: 12px 20px;
+            padding: 10px 16px;
             border-radius: 50px;
             font-weight: bold;
             font-size: 0.9rem;
@@ -386,15 +511,15 @@
         .expiry-badge {
             background: #dc3545;
             color: white;
-            font-size: 11px;
-            padding: 3px 10px;
+            font-size: 10px;
+            padding: 2px 8px;
             border-radius: 20px;
             display: inline-block;
         }
 
         .loading {
             text-align: center;
-            padding: 50px;
+            padding: 40px;
             color: #666;
         }
 
@@ -404,24 +529,24 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 48px;
+            font-size: 40px;
             border-radius: 12px;
-            height: 200px;
+            height: 180px;
         }
 
         @media (max-width: 768px) {
             .ads-grid {
                 grid-template-columns: 1fr;
             }
-            .filter-row {
-                flex-direction: column;
+            .search-icon {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
             }
-            .filter-select {
-                width: 100%;
-            }
-            .modal-content {
-                margin: 20px auto;
-                width: 95%;
+            .search-icon svg {
+                width: 24px;
+                height: 24px;
             }
         }
     </style>
@@ -433,16 +558,41 @@
             <p class="subtitle">عقارات | سيارات | وظائف | مستعمل</p>
         </div>
 
-        <div class="search-section">
-            <input type="text" id="searchInput" class="search-input" placeholder="🔍 بحث عن إعلان...">
-            <div class="filter-row">
-                <select id="cityFilter" class="filter-select">
-                    <option value="all">🌍 جميع المدن</option>
-                </select>
-                <button class="reset-btn" onclick="resetFilters()">🔄 إعادة تعيين</button>
-            </div>
-            <div id="resultsCount" class="results-count"></div>
+        <!-- أيقونة البحث -->
+        <div class="search-icon" onclick="openSearchModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
         </div>
+
+        <!-- نافذة البحث المنبثقة -->
+        <div id="searchModal" class="search-modal" onclick="closeSearchModalIfOutside(event)">
+            <div class="search-modal-content">
+                <div class="search-modal-header">
+                    <h3>🔍 بحث متقدم</h3>
+                    <button class="search-modal-close" onclick="closeSearchModal()">&times;</button>
+                </div>
+                <div class="search-modal-body">
+                    <div class="search-input-group">
+                        <label>🔎 كلمة البحث</label>
+                        <input type="text" id="searchKeyword" class="search-input-field" placeholder="عنوان، وصف، سعر...">
+                    </div>
+                    <div class="search-input-group">
+                        <label>📍 المدينة</label>
+                        <select id="searchCity" class="search-select">
+                            <option value="all">جميع المدن</option>
+                        </select>
+                    </div>
+                    <div class="search-buttons">
+                        <button class="search-btn" onclick="applySearch()">🔍 بحث</button>
+                        <button class="reset-search-btn" onclick="resetAllFilters()">↺ إعادة تعيين</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- مؤشرات الفلاتر النشطة -->
+        <div id="activeFilters" class="active-filters"></div>
 
         <div class="categories-bar" id="categoriesList">
             <button class="cat-btn active" data-cat="all">الكل</button>
@@ -493,17 +643,106 @@
         ];
 
         function formatPhoneForWhatsApp(phone) {
-            // إزالة أي مسافات أو شرطات أو أقواس
             let cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
-            // إزالة الصفر الأول إذا كان الرقم يبدأ بـ 0
             if (cleanPhone.startsWith('0')) {
                 cleanPhone = cleanPhone.substring(1);
             }
-            // إضافة كود سوريا 963 إذا لم يكن موجوداً
             if (!cleanPhone.startsWith('963')) {
                 cleanPhone = '963' + cleanPhone;
             }
             return cleanPhone;
+        }
+
+        function openSearchModal() {
+            document.getElementById('searchModal').style.display = 'flex';
+            document.getElementById('searchKeyword').value = currentSearch;
+            document.getElementById('searchCity').value = currentCity;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSearchModal() {
+            document.getElementById('searchModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeSearchModalIfOutside(event) {
+            if (event.target === document.getElementById('searchModal')) {
+                closeSearchModal();
+            }
+        }
+
+        function applySearch() {
+            currentSearch = document.getElementById('searchKeyword').value;
+            currentCity = document.getElementById('searchCity').value;
+            closeSearchModal();
+            filterAndRenderAds();
+            updateActiveFilters();
+        }
+
+        function resetAllFilters() {
+            currentSearch = '';
+            currentCity = 'all';
+            currentCategory = 'all';
+            document.getElementById('searchKeyword').value = '';
+            document.getElementById('searchCity').value = 'all';
+            
+            // إعادة تعيين التصنيف النشط
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-cat') === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+            
+            filterAndRenderAds();
+            updateActiveFilters();
+        }
+
+        function updateActiveFilters() {
+            const container = document.getElementById('activeFilters');
+            let filters = [];
+            
+            if (currentCategory !== 'all') {
+                filters.push(`<span class="filter-badge">🏷️ ${currentCategory} <span class="remove-filter" onclick="removeCategoryFilter()">✖</span></span>`);
+            }
+            if (currentCity !== 'all') {
+                filters.push(`<span class="filter-badge">📍 ${currentCity} <span class="remove-filter" onclick="removeCityFilter()">✖</span></span>`);
+            }
+            if (currentSearch !== '') {
+                filters.push(`<span class="filter-badge">🔍 "${currentSearch}" <span class="remove-filter" onclick="removeSearchFilter()">✖</span></span>`);
+            }
+            
+            if (filters.length > 0) {
+                container.innerHTML = filters.join('');
+            } else {
+                container.innerHTML = '';
+            }
+        }
+
+        function removeCategoryFilter() {
+            currentCategory = 'all';
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-cat') === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+            filterAndRenderAds();
+            updateActiveFilters();
+        }
+
+        function removeCityFilter() {
+            currentCity = 'all';
+            document.getElementById('searchCity').value = 'all';
+            filterAndRenderAds();
+            updateActiveFilters();
+        }
+
+        function removeSearchFilter() {
+            currentSearch = '';
+            document.getElementById('searchKeyword').value = '';
+            filterAndRenderAds();
+            updateActiveFilters();
         }
 
         async function loadData() {
@@ -513,7 +752,8 @@
                 allAds = data.ads || [];
                 categories = data.categories || ['عقارات', 'سيارات', 'وظائف', 'أدوات منزلية', 'مستعمل'];
                 
-                const citySelect = document.getElementById('cityFilter');
+                const citySelect = document.getElementById('searchCity');
+                citySelect.innerHTML = '<option value="all">جميع المدن</option>';
                 syrianCities.forEach(city => {
                     const option = document.createElement('option');
                     option.value = city;
@@ -531,17 +771,32 @@
 
         function renderCategories() {
             const container = document.getElementById('categoriesList');
-            container.innerHTML = '<button class="cat-btn active" data-cat="all">الكل</button>';
+            container.innerHTML = '';
+            
+            const allBtn = document.createElement('button');
+            allBtn.className = 'cat-btn active';
+            allBtn.setAttribute('data-cat', 'all');
+            allBtn.textContent = 'الكل';
+            allBtn.onclick = () => {
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                allBtn.classList.add('active');
+                currentCategory = 'all';
+                filterAndRenderAds();
+                updateActiveFilters();
+            };
+            container.appendChild(allBtn);
             
             categories.forEach(cat => {
                 const btn = document.createElement('button');
                 btn.className = 'cat-btn';
+                btn.setAttribute('data-cat', cat);
                 btn.textContent = cat;
                 btn.onclick = () => {
                     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     currentCategory = cat;
                     filterAndRenderAds();
+                    updateActiveFilters();
                 };
                 container.appendChild(btn);
             });
@@ -573,7 +828,6 @@
             
             filtered.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
             
-            document.getElementById('resultsCount').textContent = `📊 ${filtered.length} إعلان`;
             renderAdsList(filtered);
         }
 
@@ -581,7 +835,7 @@
             const container = document.getElementById('adsContainer');
             
             if(ads.length === 0) {
-                container.innerHTML = '<div class="loading">📭 لا توجد إعلانات مطابقة للبحث</div>';
+                container.innerHTML = '<div class="loading">📭 لا توجد إعلانات</div>';
                 return;
             }
 
@@ -611,7 +865,6 @@
             const whatsappNumber = formatPhoneForWhatsApp(ad.contact);
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=مرحباً، أنا مهتم بالإعلان: ${encodeURIComponent(ad.title)}`;
             
-            // بناء محتوى النافذة المنبثقة
             let imagesHtml = '';
             if (ad.images && ad.images.length > 0) {
                 imagesHtml = `
@@ -657,12 +910,12 @@
                 
                 <div class="contact-buttons">
                     <a href="${whatsappUrl}" target="_blank" class="whatsapp-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
                             <path d="M12.032 0C5.374 0 0 5.373 0 12.032c0 2.113.55 4.193 1.61 6.018L.012 24l6.094-1.593a11.967 11.967 0 0 0 5.726 1.46c6.658 0 12.032-5.373 12.032-12.032 0-6.658-5.374-11.835-12.032-11.835z"/>
                             <path fill="white" d="M12.032 2.286c5.367 0 9.72 4.353 9.72 9.72 0 5.367-4.353 9.72-9.72 9.72-1.79 0-3.516-.488-5.008-1.422l-.344-.202-3.585.936.958-3.492-.224-.37A9.625 9.625 0 0 1 2.263 12c0-5.367 4.353-9.72 9.72-9.72z"/>
                             <path fill="white" d="M9.053 7.472c-.208-.48-.427-.49-.624-.5-.175-.01-.38-.01-.586-.01-.205 0-.536.077-.818.38-.282.304-1.073 1.05-1.073 2.56 0 1.51 1.098 2.968 1.25 3.173.152.206 2.14 3.293 5.208 4.584.726.306 1.293.49 1.735.626.73.233 1.393.2 1.918.12.586-.09 1.806-.74 2.06-1.455.254-.714.254-1.326.178-1.454-.077-.128-.282-.205-.587-.358-.304-.153-1.804-.892-2.083-.994-.28-.102-.48-.153-.684.153-.204.307-.79.994-.97 1.198-.18.204-.36.23-.664.077-.305-.154-1.286-.475-2.45-1.514-.907-.81-1.52-1.81-1.698-2.116-.178-.307-.02-.474.134-.624.14-.14.306-.358.46-.562.153-.204.204-.358.306-.588.102-.23.05-.434-.025-.608-.076-.174-.684-1.63-.938-2.233-.25-.602-.5-.52-.673-.52-.175 0-.38-.01-.586-.01z"/>
                         </svg>
-                        التواصل عبر واتساب
+                        واتساب
                     </a>
                     <a href="tel:${ad.contact}" class="call-btn">
                         📞 ${escapeHtml(ad.contact)}
@@ -670,7 +923,7 @@
                 </div>
                 <div class="modal-detail">
                     <div class="modal-detail-label">🆔 رقم الإعلان</div>
-                    <div class="modal-detail-value" style="font-family: monospace;">${ad.id}</div>
+                    <div class="modal-detail-value" style="font-family: monospace; font-size: 11px;">${ad.id}</div>
                 </div>
             `;
             
@@ -710,24 +963,6 @@
                 return m;
             });
         }
-
-        function resetFilters() {
-            currentSearch = '';
-            currentCity = 'all';
-            document.getElementById('searchInput').value = '';
-            document.getElementById('cityFilter').value = 'all';
-            filterAndRenderAds();
-        }
-
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            currentSearch = e.target.value;
-            filterAndRenderAds();
-        });
-
-        document.getElementById('cityFilter').addEventListener('change', (e) => {
-            currentCity = e.target.value;
-            filterAndRenderAds();
-        });
 
         loadData();
     </script>
