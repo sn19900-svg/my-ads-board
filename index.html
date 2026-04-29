@@ -69,6 +69,36 @@
             fill: white;
         }
 
+        /* زر إرسال الإعلان عبر واتساب */
+        .whatsapp-share-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .whatsapp-share-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .whatsapp-share-btn svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
         /* نافذة البحث المنبثقة */
         .search-modal {
             display: none;
@@ -234,7 +264,6 @@
             color: white;
         }
 
-        /* مؤشر البحث النشط */
         .active-filters {
             display: flex;
             flex-wrap: wrap;
@@ -265,6 +294,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
+            margin-bottom: 80px;
         }
 
         .ad-card {
@@ -538,13 +568,18 @@
             .ads-grid {
                 grid-template-columns: 1fr;
             }
-            .search-icon {
+            .search-icon, .whatsapp-share-btn {
                 bottom: 20px;
-                left: 20px;
                 width: 50px;
                 height: 50px;
             }
-            .search-icon svg {
+            .search-icon {
+                left: 20px;
+            }
+            .whatsapp-share-btn {
+                right: 20px;
+            }
+            .search-icon svg, .whatsapp-share-btn svg {
                 width: 24px;
                 height: 24px;
             }
@@ -564,6 +599,15 @@
                 <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
             </svg>
         </div>
+
+        <!-- زر إرسال الإعلان عبر واتساب -->
+        <a href="https://wa.me/963xxxxxxxxx?text=مرحباً، أريد إضافة إعلان جديد%0A%0A📌 العنوان: %0A📝 الوصف: %0A💰 السعر: %0A📍 المدينة: %0A📞 رقم التواصل: %0A🖼️ رابط الصور: " target="_blank" class="whatsapp-share-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12.032 0C5.374 0 0 5.373 0 12.032c0 2.113.55 4.193 1.61 6.018L.012 24l6.094-1.593a11.967 11.967 0 0 0 5.726 1.46c6.658 0 12.032-5.373 12.032-12.032 0-6.658-5.374-11.835-12.032-11.835z"/>
+                <path fill="white" d="M12.032 2.286c5.367 0 9.72 4.353 9.72 9.72 0 5.367-4.353 9.72-9.72 9.72-1.79 0-3.516-.488-5.008-1.422l-.344-.202-3.585.936.958-3.492-.224-.37A9.625 9.625 0 0 1 2.263 12c0-5.367 4.353-9.72 9.72-9.72z"/>
+                <path fill="white" d="M9.053 7.472c-.208-.48-.427-.49-.624-.5-.175-.01-.38-.01-.586-.01-.205 0-.536.077-.818.38-.282.304-1.073 1.05-1.073 2.56 0 1.51 1.098 2.968 1.25 3.173.152.206 2.14 3.293 5.208 4.584.726.306 1.293.49 1.735.626.73.233 1.393.2 1.918.12.586-.09 1.806-.74 2.06-1.455.254-.714.254-1.326.178-1.454-.077-.128-.282-.205-.587-.358-.304-.153-1.804-.892-2.083-.994-.28-.102-.48-.153-.684.153-.204.307-.79.994-.97 1.198-.18.204-.36.23-.664.077-.305-.154-1.286-.475-2.45-1.514-.907-.81-1.52-1.81-1.698-2.116-.178-.307-.02-.474.134-.624.14-.14.306-.358.46-.562.153-.204.204-.358.306-.588.102-.23.05-.434-.025-.608-.076-.174-.684-1.63-.938-2.233-.25-.602-.5-.52-.673-.52-.175 0-.38-.01-.586-.01z"/>
+            </svg>
+        </a>
 
         <!-- نافذة البحث المنبثقة -->
         <div id="searchModal" class="search-modal" onclick="closeSearchModalIfOutside(event)">
@@ -642,6 +686,9 @@
             'الحفة', 'صافيتا', 'الشيخ بدر', 'دوير رسلان', 'المختارية'
         ];
 
+        // رقم الأدمن لاستقبال الإعلانات عبر واتساب - غير الرقم هنا
+        const ADMIN_WHATSAPP_NUMBER = "963XXXXXXXXX"; // ضع رقمك هنا مع كود الدولة
+
         function formatPhoneForWhatsApp(phone) {
             let cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
             if (cleanPhone.startsWith('0')) {
@@ -686,7 +733,6 @@
             document.getElementById('searchKeyword').value = '';
             document.getElementById('searchCity').value = 'all';
             
-            // إعادة تعيين التصنيف النشط
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-cat') === 'all') {
