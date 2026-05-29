@@ -40,6 +40,20 @@
       "pinned": false,
       "pinExpiry": null,
       "images": []
+    },
+    {
+      "id": "1780036549758",
+      "title": "جوال سامسونغ",
+      "description": "s10 نظيف",
+      "price": "1,500,000",
+      "category": "موبايلات",
+      "city": "حمص",
+      "contact": "01234567890",
+      "date": "2026-05-29",
+      "expiry_date": "2026-06-28",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": []
     }
   ]
 }
