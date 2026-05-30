@@ -42,6 +42,22 @@
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780155367174_0.jpg"
       ]
+    },
+    {
+      "id": "1780155444801",
+      "title": "شقة",
+      "description": "شقة للبيع",
+      "price": "1700000 ل.س",
+      "category": "عقارات",
+      "city": "دمشق",
+      "contact": "653948464",
+      "date": "2026-05-30",
+      "expiry_date": "2026-06-29",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780155444801_0.jpg"
+      ]
     }
   ]
 }
