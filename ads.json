@@ -26,6 +26,22 @@
       "pinned": false,
       "pinExpiry": null,
       "images": []
+    },
+    {
+      "id": "1780150154738",
+      "title": "سيارة للبيع",
+      "description": "سيارة للبيع نظيفة",
+      "price": "1200000",
+      "category": "سيارات",
+      "city": "حمص",
+      "contact": "31246849",
+      "date": "2026-05-30",
+      "expiry_date": "2026-06-04",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780150154738_0.jpg"
+      ]
     }
   ]
 }
