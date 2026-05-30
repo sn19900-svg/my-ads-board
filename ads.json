@@ -12,5 +12,22 @@
     "غذائيات",
     "يدويات"
   ],
-  "ads": []
+  "ads": [
+    {
+      "id": "1780149691112",
+      "title": "سيارة للبيع",
+      "description": "سيارة",
+      "price": "1,500,000",
+      "category": "عقارات",
+      "city": "حمص",
+      "contact": "123456789",
+      "date": "2026-05-30",
+      "expiry_date": "2026-06-04",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780149691112_0.jpg"
+      ]
+    }
+  ]
 }
