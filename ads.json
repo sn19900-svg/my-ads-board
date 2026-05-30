@@ -13,36 +13,5 @@
     "يدويات",
     "ملابس"
   ],
-  "ads": [
-    {
-      "id": "1780164874435",
-      "title": "شقة للبيع",
-      "description": "شقة للبيع غرفتين وصالة",
-      "price": "30 مليون",
-      "category": "عقارات",
-      "city": "دمشق",
-      "contact": "349568368",
-      "date": "2026-05-30",
-      "expiry_date": "2026-06-02",
-      "pinned": true,
-      "pinExpiry": "2026-06-04",
-      "images": []
-    },
-    {
-      "id": "1780165081799",
-      "title": "بدلة عروس",
-      "description": "بدلة عروس جديدة",
-      "price": "736636",
-      "category": "ملابس",
-      "city": "حمص",
-      "contact": "948755",
-      "date": "2026-05-30",
-      "expiry_date": "2026-06-05",
-      "pinned": true,
-      "pinExpiry": "2026-05-31",
-      "images": [
-        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780165081799_0.jpg"
-      ]
-    }
-  ]
+  "ads": []
 }
