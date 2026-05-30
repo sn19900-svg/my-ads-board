@@ -38,8 +38,8 @@
       "contact": "948755",
       "date": "2026-05-30",
       "expiry_date": "2026-06-05",
-      "pinned": false,
-      "pinExpiry": null,
+      "pinned": true,
+      "pinExpiry": "2026-05-31",
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780165081799_0.jpg"
       ]
