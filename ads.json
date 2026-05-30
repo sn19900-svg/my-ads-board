@@ -14,20 +14,18 @@
   ],
   "ads": [
     {
-      "id": "1780149691112",
-      "title": "سيارة للبيع",
-      "description": "سيارة",
-      "price": "1,500,000",
+      "id": "1780149793267",
+      "title": "شقة للبيع",
+      "description": "شقة",
+      "price": "150000",
       "category": "عقارات",
-      "city": "حمص",
-      "contact": "123456789",
+      "city": "دمشق",
+      "contact": "132456798",
       "date": "2026-05-30",
-      "expiry_date": "2026-06-04",
+      "expiry_date": "2026-06-02",
       "pinned": false,
       "pinExpiry": null,
-      "images": [
-        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780149691112_0.jpg"
-      ]
+      "images": []
     }
   ]
 }
