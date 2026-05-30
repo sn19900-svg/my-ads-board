@@ -23,8 +23,8 @@
       "contact": "349568368",
       "date": "2026-05-30",
       "expiry_date": "2026-06-02",
-      "pinned": false,
-      "pinExpiry": null,
+      "pinned": true,
+      "pinExpiry": "2026-06-04",
       "images": []
     }
   ]
