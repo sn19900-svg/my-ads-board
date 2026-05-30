@@ -58,6 +58,22 @@
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780155637971_0.jpg"
       ]
+    },
+    {
+      "id": "1780155763538",
+      "title": "شقة",
+      "description": "شقة للبيع بالمزة",
+      "price": "1652782",
+      "category": "عقارات",
+      "city": "دمشق",
+      "contact": "31848549",
+      "date": "2026-05-30",
+      "expiry_date": "2026-06-05",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780155763538_0.jpg"
+      ]
     }
   ]
 }
