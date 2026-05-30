@@ -28,19 +28,19 @@
       "images": []
     },
     {
-      "id": "1780155087109",
-      "title": "شقة",
-      "description": "شقة للبيع",
-      "price": "14000000",
-      "category": "عقارات",
-      "city": "حماة",
-      "contact": "45278879",
+      "id": "1780155367174",
+      "title": "سيارة",
+      "description": "سيارة فورد",
+      "price": "16000 ل.س",
+      "category": "سيارات",
+      "city": "حمص",
+      "contact": "625995986",
       "date": "2026-05-30",
-      "expiry_date": "2026-06-29",
+      "expiry_date": "2026-06-05",
       "pinned": false,
       "pinExpiry": null,
       "images": [
-        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780155087109_0.jpg"
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780155367174_0.jpg"
       ]
     }
   ]
