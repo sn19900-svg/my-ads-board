@@ -44,19 +44,19 @@
       ]
     },
     {
-      "id": "1780155444801",
-      "title": "شقة",
-      "description": "شقة للبيع",
-      "price": "1700000 ل.س",
-      "category": "عقارات",
-      "city": "دمشق",
-      "contact": "653948464",
+      "id": "1780155637971",
+      "title": "تلفاز",
+      "description": "تلفاز للبيع",
+      "price": "5657",
+      "category": "الكترونيات",
+      "city": "حمص",
+      "contact": "6328895",
       "date": "2026-05-30",
-      "expiry_date": "2026-06-29",
+      "expiry_date": "2026-06-04",
       "pinned": false,
       "pinExpiry": null,
       "images": [
-        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780155444801_0.jpg"
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780155637971_0.jpg"
       ]
     }
   ]
