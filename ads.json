@@ -124,6 +124,20 @@
       "pinned": false,
       "pinExpiry": null,
       "images": []
+    },
+    {
+      "id": "1780124398568",
+      "title": "تلفاز",
+      "description": "تلفاز سامسونغ",
+      "price": "1,500,000",
+      "category": "الكترونيات",
+      "city": "حلب",
+      "contact": "01234567890",
+      "date": "2026-05-30",
+      "expiry_date": "2026-06-02",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": []
     }
   ]
 }
