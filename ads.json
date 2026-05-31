@@ -13,5 +13,22 @@
     "يدويات",
     "ملابس"
   ],
-  "ads": []
+  "ads": [
+    {
+      "id": "1780208751055",
+      "title": "شقة للبيع",
+      "description": "غرفتين وصالة",
+      "price": "100 مليون",
+      "category": "عقارات",
+      "city": "دمشق",
+      "contact": "318295995",
+      "date": "2026-05-31",
+      "expiry_date": "2026-06-03",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780208751055_0.jpg"
+      ]
+    }
+  ]
 }
