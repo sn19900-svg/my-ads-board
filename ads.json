@@ -24,8 +24,8 @@
       "contact": "318295995",
       "date": "2026-05-31",
       "expiry_date": "2026-06-03",
-      "pinned": false,
-      "pinExpiry": null,
+      "pinned": true,
+      "pinExpiry": "2026-06-03",
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780208751055_0.jpg"
       ]
