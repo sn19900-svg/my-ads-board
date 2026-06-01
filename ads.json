@@ -13,38 +13,5 @@
     "يدويات",
     "ملابس"
   ],
-  "ads": [
-    {
-      "id": "1780208751055",
-      "title": "شقة للبيع",
-      "description": "غرفتين وصالة",
-      "price": "100 مليون",
-      "category": "عقارات",
-      "city": "دمشق",
-      "contact": "318295995",
-      "date": "2026-05-31",
-      "expiry_date": "2026-06-03",
-      "pinned": true,
-      "pinExpiry": "2026-06-03",
-      "images": [
-        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780208751055_0.jpg"
-      ]
-    },
-    {
-      "id": "1780227985406",
-      "title": "سيارة",
-      "description": "سيارة فورد جديدة",
-      "price": "150 مليون",
-      "category": "سيارات",
-      "city": "حمص",
-      "contact": "127584996",
-      "date": "2026-05-31",
-      "expiry_date": "2026-06-03",
-      "pinned": false,
-      "pinExpiry": null,
-      "images": [
-        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780227985406_0.jpg"
-      ]
-    }
-  ]
+  "ads": []
 }
