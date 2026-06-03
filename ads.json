@@ -13,5 +13,29 @@
     "يدويات",
     "ملابس"
   ],
-  "ads": []
+  "ads": [
+    {
+      "id": "1780474652862",
+      "title": "سيارة للبيع",
+      "description": "شفر ابترا \nكرت 10\/10\nسقف ودواخل خالي من برا 3قطع\nمحرك دهب",
+      "price": "7600 $",
+      "category": "سيارات",
+      "city": "حمص",
+      "contact": "0947482539",
+      "date": "٢٠٢٦-٠٦-٠٣",
+      "expiry_date": "٢٠٢٦-٠٩-٠١",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_0.jpg",
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_1.jpg",
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_2.jpg",
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_3.jpg",
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_4.jpg",
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_5.jpg",
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_6.jpg",
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_7.jpg"
+      ]
+    }
+  ]
 }
