@@ -13,20 +13,5 @@
     "يدويات",
     "ملابس"
   ],
-  "ads": [
-    {
-      "id": "1780474539773",
-      "title": "سيارة",
-      "description": "سيارة للبيع",
-      "price": "1500",
-      "category": "سيارات",
-      "city": "حمص",
-      "contact": "0964545645",
-      "date": "٢٠٢٦-٠٦-٠٣",
-      "expiry_date": "٢٠٢٦-٠٧-٠٣",
-      "pinned": false,
-      "pinExpiry": null,
-      "images": []
-    }
-  ]
+  "ads": []
 }
