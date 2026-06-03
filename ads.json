@@ -169,22 +169,6 @@
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780477745797_0.jpg"
       ]
-    },
-    {
-      "id": "1780478159974",
-      "title": "تجريبي",
-      "description": "تجريبي",
-      "price": "4556",
-      "category": "الكترونيات",
-      "city": "دمشق",
-      "contact": "09464575",
-      "date": "2026-06-03",
-      "expiry_date": "2026-07-03",
-      "pinned": false,
-      "pinExpiry": null,
-      "images": [
-        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780478159974_0.jpg"
-      ]
     }
   ]
 }
