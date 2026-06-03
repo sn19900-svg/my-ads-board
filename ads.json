@@ -105,6 +105,22 @@
       "pinned": false,
       "pinExpiry": null,
       "images": []
+    },
+    {
+      "id": "1780477200226",
+      "title": "دورات تعليمية",
+      "description": "دورات صيفية في اللغة الانكليزية \nمع الانسة أديبة معصراني",
+      "price": "أسعار مناسبة",
+      "category": "تعليم",
+      "city": "حمص",
+      "contact": "0939179815",
+      "date": "٢٠٢٦-٠٦-٠٣",
+      "expiry_date": "٢٠٢٦-٠٩-٠١",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780477200226_0.jpg"
+      ]
     }
   ]
 }
