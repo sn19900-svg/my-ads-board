@@ -169,22 +169,6 @@
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780477745797_0.jpg"
       ]
-    },
-    {
-      "id": "1780479074676",
-      "title": "تجريبي",
-      "description": "تجريبي",
-      "price": "25000",
-      "category": "عقارات",
-      "city": "دمشق",
-      "contact": "094645499",
-      "date": "2026-06-03",
-      "expiry_date": "2026-07-03",
-      "pinned": false,
-      "pinExpiry": null,
-      "images": [
-        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780479074676_0.jpg"
-      ]
     }
   ]
 }
