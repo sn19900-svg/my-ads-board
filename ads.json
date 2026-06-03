@@ -153,6 +153,22 @@
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780477612901_0.jpg"
       ]
+    },
+    {
+      "id": "1780477745797",
+      "title": "دورات تعليمية",
+      "description": "دورة صيفية \nمادة الفيزياء والكيمياء \nللتاسع والبكالوريا \nمع الأستاذ عدي ضرغام",
+      "price": "أسعار مناسبة",
+      "category": "تعليم",
+      "city": "حمص",
+      "contact": "0996255168",
+      "date": "٢٠٢٦-٠٦-٠٣",
+      "expiry_date": "٢٠٢٦-٠٩-٠١",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780477745797_0.jpg"
+      ]
     }
   ]
 }
