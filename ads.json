@@ -13,5 +13,20 @@
     "يدويات",
     "ملابس"
   ],
-  "ads": []
+  "ads": [
+    {
+      "id": "1780474378349",
+      "title": "سيارة",
+      "description": "سيارة للببت",
+      "price": "3000 $",
+      "category": "سيارات",
+      "city": "حمص",
+      "contact": "0946454545",
+      "date": "2026-06-03",
+      "expiry_date": "2026-07-03",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": []
+    }
+  ]
 }
