@@ -36,6 +36,20 @@
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_6.jpg",
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780474652862_7.jpg"
       ]
+    },
+    {
+      "id": "1780475307785",
+      "title": "دورات تعليمية",
+      "description": "بدك ما تكلف اهلك \nولاتهكلهن هم مصروف دراستك \nتعا لعنا ورح تدعيلنا \nمع نخبة من الاساتذة لكل المواد\n ناطرينكن تسجلو معنا \nوتستفيدو من خبراتنا \nالمواصلات مؤمنة",
+      "price": "دورات مجانية",
+      "category": "تعليم",
+      "city": "حمص",
+      "contact": "0989857702",
+      "date": "٢٠٢٦-٠٦-٠٣",
+      "expiry_date": "٢٠٢٦-٠٧-٠٣",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": []
     }
   ]
 }
