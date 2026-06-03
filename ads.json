@@ -81,6 +81,22 @@
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780475612711_0.jpg"
       ]
+    },
+    {
+      "id": "1780475763817",
+      "title": "دورات تعليمية",
+      "description": "#تاسع \n#رياضيات \n#الأستاذ_محمد_قطوس\nالدورة الصيفية المنتظرة\n((الأعداد نموذجية محدودة))",
+      "price": "أسعار مدروسة",
+      "category": "تعليم",
+      "city": "حمص",
+      "contact": "0951331935",
+      "date": "٢٠٢٦-٠٦-٠٣",
+      "expiry_date": "٢٠٢٦-٠٩-٠١",
+      "pinned": false,
+      "pinExpiry": null,
+      "images": [
+        "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780475763817_0.jpg"
+      ]
     }
   ]
 }
