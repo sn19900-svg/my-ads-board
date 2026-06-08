@@ -169,20 +169,6 @@
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780477745797_0.jpg"
       ]
-    },
-    {
-      "id": "1780914848971",
-      "title": "تجريبي",
-      "description": "تجريبي\nhttps:\/\/www.google.com",
-      "price": "165555",
-      "category": "عقارات",
-      "city": "دمشق",
-      "contact": "6494849",
-      "date": "2026-06-08",
-      "expiry_date": null,
-      "pinned": false,
-      "pinExpiry": null,
-      "images": []
     }
   ]
 }
