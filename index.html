@@ -461,7 +461,7 @@ function showDetail(id){
   document.getElementById('detailTitle').textContent=ad.title||'';
   document.getElementById('detailBody').innerHTML=`
     ${imgHTML}
-    <div class="detail-row"><div class="detail-lbl">📝 الوصف</div><div class="detail-val">${esc(ad.description||'')}</div></div>
+    <div class="detail-row"><div class="detail-lbl">📝 الوصف</div><div class="detail-val" style="line-height:1.8;white-space:pre-wrap">${linkify(ad.description||'')}</div></div>
     <div class="detail-row"><div class="detail-lbl">💰 السعر</div><div class="detail-val">${esc(ad.price||'')}</div></div>
     <div class="detail-row"><div class="detail-lbl">📍 المدينة</div><div class="detail-val">${esc(ad.city||'غير محدد')}</div></div>
     <div class="detail-row"><div class="detail-lbl">🏷️ التصنيف</div><div class="detail-val">${esc(ad.category||'')}</div></div>
