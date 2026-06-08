@@ -411,7 +411,12 @@ function renderAds(){
     const q=curSearch.toLowerCase();
     filtered=filtered.filter(a=>(a.title&&a.title.toLowerCase().includes(q))||(a.description&&a.description.toLowerCase().includes(q))||(a.price&&a.price.toLowerCase().includes(q))||(a.city&&a.city.toLowerCase().includes(q)));
   }
-  filtered.sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0));
+  filtered.sort((a,b)=>{
+    // المثبّتة أولاً دائماً
+    if(b.pinned !== a.pinned) return (b.pinned?1:0)-(a.pinned?1:0);
+    // ثم الأحدث بالـ id (طابع زمني)
+    return parseInt(b.id||0) - parseInt(a.id||0);
+  });
   const grid=document.getElementById('adsGrid');
   if(!filtered.length){grid.innerHTML='<div class="no-ads">📭 لا توجد إعلانات</div>';return;}
   grid.innerHTML=filtered.map(ad=>cardHTML(ad)).join('');
