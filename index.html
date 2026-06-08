@@ -540,7 +540,7 @@ function linkify(text){
     if(urlRegex.test(part)){
       urlRegex.lastIndex = 0;
       const href = part.startsWith('http') ? part : 'https://' + part;
-      return '<a href="' + esc(href) + '" target="_blank" style="color:#f0b84a;text-decoration:underline;word-break:break-all;" onclick="event.stopPropagation()">' + esc(part) + '</a>';
+      return '<a href="javascript:void(0)" style="color:#f0b84a;text-decoration:underline;word-break:break-all;" onclick="event.stopPropagation();openExternalUrl(\'' + href + '\')">' + esc(part) + '</a>';
     }
     return esc(part);
   }).join('');
@@ -548,6 +548,20 @@ function linkify(text){
 function makeEl(tag,cls,html){const el=document.createElement(tag);el.className=cls;el.innerHTML=html;return el;}
 function toArabicNum(n){return n.toString().replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);}
 
+// فتح الروابط في المتصفح الخارجي
+function openExternalUrl(url){
+  try {
+    // Android WebView bridge
+    if(window.AndroidBridge && window.AndroidBridge.openUrl){
+      window.AndroidBridge.openUrl(url);
+    } else {
+      // fallback: فتح في نافذة جديدة
+      window.open(url, '_blank');
+    }
+  } catch(e){
+    window.open(url, '_blank');
+  }
+}
 loadData();
 </script>
 </body>
