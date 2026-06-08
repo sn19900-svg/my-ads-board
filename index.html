@@ -526,6 +526,14 @@ function closeDetailIfOut(e){if(e.target===document.getElementById('detailModal'
 
 // ── Helpers ──
 function esc(s){if(!s)return'';return s.replace(/[&<>]/g,m=>m==='&'?'&amp;':m==='<'?'&lt;':'&gt;');}
+function linkify(text){
+  if(!text) return '';
+  const safe = esc(text);
+  return safe.replace(/(https?:\/\/\S+|www\.\S+)/gi, function(url){
+    const href = url.startsWith('http') ? url : 'https://' + url;
+    return '<a href="' + href + '" target="_blank" style="color:#f0b84a;text-decoration:underline;word-break:break-all;" onclick="event.stopPropagation()">' + url + '</a>';
+  });
+}
 function makeEl(tag,cls,html){const el=document.createElement(tag);el.className=cls;el.innerHTML=html;return el;}
 function toArabicNum(n){return n.toString().replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);}
 
