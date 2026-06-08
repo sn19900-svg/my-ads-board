@@ -169,20 +169,6 @@
       "images": [
         "https:\/\/raw.githubusercontent.com\/sn19900-svg\/my-ads-board\/main\/images\/1780477745797_0.jpg"
       ]
-    },
-    {
-      "id": "1780931095604",
-      "title": "تجريب",
-      "description": "تجريب\nhttps:\/\/www.google.com",
-      "price": "16617",
-      "category": "عقارات",
-      "city": "دمشق",
-      "contact": "6484994",
-      "date": "2026-06-08",
-      "expiry_date": null,
-      "pinned": false,
-      "pinExpiry": null,
-      "images": []
     }
   ]
 }
