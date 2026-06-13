@@ -14,23 +14,6 @@
       "expiry_date": null,
       "images": [],
       "status": "pending"
-    },
-    {
-      "id": "1781345976441",
-      "title": "تجريب",
-      "description": "تجريب",
-      "price": "تجريب",
-      "contact": "963940353555",
-      "category": "عقارات",
-      "city": "دمشق",
-      "date": "2026-06-13",
-      "user": "963940353555",
-      "pinned": false,
-      "expiry_date": null,
-      "images": [
-        "https:\/\/res.cloudinary.com\/dsk4avcev\/image\/upload\/f_webp,q_auto:good,w_1024\/v1781345980\/syrian_souq\/1781345976441_0.jpg"
-      ],
-      "status": "pending"
     }
   ]
 }
